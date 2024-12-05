@@ -7,7 +7,8 @@ from .serializers import GameSerializer
 
 
 class NewGameView(APIView):
-    def post(self, request):
+    @staticmethod
+    def post(request):
         """Create a new game."""
         game = Game()
         game.initialize()
@@ -15,7 +16,8 @@ class NewGameView(APIView):
 
 
 class GameStateView(APIView):
-    def get(self, request, id):
+    @staticmethod
+    def get(request, id):
         """Retrieve the state of a game."""
         try:
             game = Game.objects.get(id=id)
@@ -27,7 +29,8 @@ class GameStateView(APIView):
 
 
 class GuessView(APIView):
-    def post(self, request, id):
+    @staticmethod
+    def post(request, id):
         """Handle a guess and return the updated game state."""
         try:
             game = Game.objects.get(id=id)
