@@ -23,6 +23,11 @@ SECRET_KEY = 'django-insecure-^#@djq)1^y!u*@e!+)$ye)v^=0a&=o#n$gnjt1l*86!96p)39n
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 ALLOWED_HOSTS = []
 
@@ -36,9 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'game.apps.GameConfig',
     'drf_yasg',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -46,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'HangMan.urls'
